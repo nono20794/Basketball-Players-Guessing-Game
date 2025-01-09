@@ -1,4 +1,9 @@
+.result-list-container {
+  width: 100%;
+}
 .result-list {
+  width: 100%;
+  border-radius: 10px;
   margin-top: 10px;
   background-color: white; /* White background for the list */
   display: flex;
@@ -15,15 +20,20 @@
 
 .result-item {
   width: 100%;
-  background: linear-gradient(to right, aqua 50%, white 50%);
+  background: linear-gradient(to right, #759dd9 50%, white 50%);
   background-size: 200% 100%;
   background-position: right bottom;
   border: none;
   padding: 5px;
   font-size: 1rem;
   transition: all 0.3s ease-out;
+  text-align: end;
+  padding-right: 10px;
 }
 
 .result-item:hover {
   background-position: left bottom;
+  color: wheat;
+  font-size: 1.08rem;
+  font-weight: 500;
 }

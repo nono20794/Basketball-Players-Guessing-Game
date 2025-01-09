@@ -21,26 +21,32 @@ export default function Game() {
   return (
     <>
       <section className="game-section">
-        <div className="searchbar-container">
-          {inputValue ? (
-            <i
-              className="fa-solid fa-xmark"
-              id="closed-icon"
-              onClick={() => {
-                setInputValue("");
-                setResultShow(false);
-              }}
-            ></i>
-          ) : (
-            <i className="fa-solid fa-magnifying-glass" id="search-icon"></i>
-          )}
-          <input
-            type="text"
-            className="input-palyer-name"
-            placeholder="הכנס שם שחקן "
-            value={inputValue}
-            onChange={(e) => handleChange(e.target.value)}
-          />
+        <div className="search-header">
+          <div className="searchbar-tools">
+            <p className="num-guesses">מס' ניחושים: 8</p>
+            <p className="time-remaine">00:00:00</p>
+          </div>
+          <div className="searchbar-container">
+            {inputValue ? (
+              <i
+                className="fa-solid fa-xmark"
+                id="closed-icon"
+                onClick={() => {
+                  setInputValue("");
+                  setResultShow(false);
+                }}
+              ></i>
+            ) : (
+              <i className="fa-solid fa-magnifying-glass" id="search-icon"></i>
+            )}
+            <input
+              type="text"
+              className="input-palyer-name"
+              placeholder="הכנס שם שחקן "
+              value={inputValue}
+              onChange={(e) => handleChange(e.target.value)}
+            />
+          </div>
         </div>
 
         <AnimatePresence>
