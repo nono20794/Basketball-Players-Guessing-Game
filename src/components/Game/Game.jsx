@@ -1,11 +1,21 @@
 import { useState } from "react";
 import "./Game.css";
+import ResultList from "./ResultList";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Game() {
   const [inputValue, setInputValue] = useState("");
+  const [showResults, setResultShow] = useState(false);
+  // const showResults = inputValue.trim() !== "";
 
-  function handleChange(e) {
-    setInputValue(e.target.value);
+  function handleChange(input) {
+    setInputValue(input);
+    setResultShow(input.trim() !== "");
+  }
+
+  function handleClick(name) {
+    setInputValue(name);
+    setResultShow(false);
   }
 
   return (
@@ -16,7 +26,10 @@ export default function Game() {
             <i
               className="fa-solid fa-xmark"
               id="closed-icon"
-              onClick={() => setInputValue("")}
+              onClick={() => {
+                setInputValue("");
+                setResultShow(false);
+              }}
             ></i>
           ) : (
             <i className="fa-solid fa-magnifying-glass" id="search-icon"></i>
@@ -26,10 +39,25 @@ export default function Game() {
             className="input-palyer-name"
             placeholder="הכנס שם שחקן "
             value={inputValue}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e.target.value)}
           />
         </div>
-        <div className="results-container"></div>
+
+        <AnimatePresence>
+          {showResults && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.2, ease: "easeInOut" }}
+              className="result-list-container"
+            >
+              <ResultList value={inputValue} onResultClick={handleClick} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <h3>this is the guessing component</h3>
       </section>
     </>
   );
