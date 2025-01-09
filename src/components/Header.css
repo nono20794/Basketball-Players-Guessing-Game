@@ -1,0 +1,42 @@
+.header-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  padding-inline: 25px;
+}
+
+.header-nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.single-header-icon {
+  font-size: 22px;
+  color: black;
+  transition: font-size 0.2s ease-in 0s, color 0.2s ease-in 0s;
+}
+.single-header-icon:hover {
+  font-size: 26px;
+  color: #4c7dc6;
+}
+
+.logo-container {
+  padding: 10px;
+  background-image: url("/src/assets/images/ball2.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/*FOR BIGGER SCREENS*/
+@media (min-width: 600px) {
+  .header-section {
+    justify-content: space-evenly;
+  }
+  .header-nav-icons {
+    gap: 27px;
+  }
+}

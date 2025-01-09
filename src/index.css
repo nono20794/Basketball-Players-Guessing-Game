@@ -1,0 +1,34 @@
+:root {
+  --back-color: #ebeffc;
+  --icon-hover: #4c7dc6;
+  --text-color: #1d1919;
+  --correct-back: #63f463;
+  --almost-back: #f3ab26;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Fredoka", sans-serif;
+}
+
+html,
+body {
+  background-color: var(--back-color);
+  color: var(--text-color);
+}
+a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+button,
+button:hover {
+  cursor: pointer;
+  font-family: "Fredoka", sans-serif;
+}
+main {
+  margin-block: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
