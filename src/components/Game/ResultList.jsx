@@ -53,11 +53,69 @@ export default function ResultList({ value, onResultClick }) {
     "Lily Zhang",
     "David Kowalski",
   ];
-  const resultfilter = names.filter((name) => {
-    return name && value && name.toLowerCase().includes(value.toLowerCase());
-  });
+  const hebrewNames = [
+    "אברהם כהן",
+    "שרה לוי",
+    "משה גולדברג",
+    "רחל רוזנברג",
+    "דוד פרידמן",
+    "מרים אזולאי",
+    "יעקב ברגר",
+    "חנה וайנשטיין",
+    "יוסף שפירא",
+    "אסתר מלכה",
+    "שלמה רובין",
+    "רבקה גרין",
+    "יצחק קליין",
+    "לאה גורדון",
+    "דניאל פרץ",
+    "תמר שטיין",
+    "אהרן רוזן",
+    "מיכל ברקוביץ",
+    "נתן הורוביץ",
+    "שושנה פרידמן",
+    "אליהו כץ",
+    "נעמי גולדשטיין",
+    "שמואל לנדאו",
+    "אילנה רוטשילד",
+    "אריה שוורץ",
+  ];
 
-  const resultsElements = resultfilter.map((name) => {
+  //   const resultfilter = names.filter((name) => {
+  //     return name && value && name.toLowerCase().includes(value.toLowerCase());
+  //   });
+
+  const searchAndSortNames = (names, value) => {
+    if (!value) return names;
+
+    const lowercaseValue = value.toLowerCase();
+
+    // Filter names that include the search value
+    const filteredNames = names.filter(
+      (name) => name && name.toLowerCase().includes(lowercaseValue)
+    );
+
+    // Sort into two groups: starts with and includes
+    const startsWithNames = [];
+    const includesNames = [];
+
+    filteredNames.forEach((name) => {
+      if (name.toLowerCase().startsWith(lowercaseValue)) {
+        startsWithNames.push(name);
+      } else {
+        includesNames.push(name);
+      }
+    });
+
+    // Sort each group alphabetically
+    startsWithNames.sort();
+    includesNames.sort();
+
+    // Combine the groups
+    return [...startsWithNames, ...includesNames];
+  };
+
+  const resultsElements = searchAndSortNames(hebrewNames, value).map((name) => {
     return (
       <button
         key={name}
